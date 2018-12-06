@@ -166,6 +166,32 @@ function handler () {
 和实验一中的测试步骤和结果相同
 
 ## 用custom runtime跑php脚本
+在本实验当中，我们借用[stackery](https://github.com/stackery/php-lambda-layer)分享的php custom runtime来跑PHP的脚本,实现简单的hello world功能。
+
+### 1. 创建lambda
+创建index.php代码
+```php
+Hello World! You've reached <?php print($_SERVER['REQUEST_URI']); ?>
+```
+如实验1，2一样创建lambda，打包index.php，并上传。
+大家可以直接使用我打包好的[function_php.zip](./php_example/function_php.zip)
+
+### 2. 添加php custom层
+如实验2中一样在lambda上添加层。
+
+大家可以直接使用我分享在中国北京区的php层。(arn:aws-cn:lambda:cn-north-1:074481125102:layer:stackery_php:1)
+![](./images/add_layer3.png)
+
+也可以自己如实验2一样创建新的php custom层。
+
+关于创建php custom层时所需要使用的zip包，大家可以根据[stackery](https://github.com/stackery/php-lambda-layer)文档编译custom runtime,或直接下载我打包编译好的[php71.zip](./php_example/php71.zip)
+
+### 3. 创建测试案例并测试
+![](./images/test2.png)
+
+测试结果
+
+![](./images/result3.png)
 
 # 参考文献
 - runtime api: https://docs.aws.amazon.com/zh_cn/lambda/latest/dg/runtimes-api.html
