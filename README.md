@@ -75,7 +75,9 @@ runtime API的使用流程一般是:
 3. [用custom runtime跑php脚本](#用custom-runtime跑php脚本)
 
 ## 用custom runtime跑bash脚本
-### 1. 参考官方教程创建bootstrap和function代码
+这个小实验当中，我们参考官方教程创建一个bash的custom runtime，实现简单的直接echo返回事件输入数据的功能。
+
+### 1. 创建bootstrap和function代码
 
 bootstrap
 ```bash
@@ -114,7 +116,7 @@ function handler () {
 ```
 
 ### 2. 打包bootstrap和function.sh到一个zip文件。
-注意： bootstrap和function.sh都需要配置成为可执行文件
+注意： bootstrap和function.sh都需要配置成为可执行文件，
 大家也可以直接使用我已经打包好的[zip](./bash_example/function.zip)
 
 ### 3. 在控制台创建lambda并上传zip文件
@@ -135,6 +137,34 @@ function handler () {
 ![](./images/result1.png)
 
 ## 用layer分离runtime和lambda方法
+这个小实验中，我们在实验1的基础上面把bash的custom runtime分离到lambda layer([什么是layer?](https://github.com/hawkey999/lambda-layer-demo))上去。
+
+因为layer是可以和多个lambda分享的，所以以后我们要写一个bash的lamda程序，只需要写一下自己的function.sh，然后再在该lambda上加入bash custom runtime layer就可以直接工作了！
+
+### 1. 创建lambda
+和实验一中的步骤一样创建lambda， 唯一的区别在于上载的zip包中现在只包含funtion.sh。
+
+大家可以直接使用我已经打包好的[function_only.zip](./bash_layer_example/function_only.zip)
+
+### 2. 打包layer代码
+单独打包bootstrap代码到runtime.zip
+大家可以直接使用我已经打包好的[runtime.zip](./bash_layer_example/runtime.zip)
+
+### 3. 创建layer
+![](./images/layer_create1.png)
+
+记录下layer的ARN
+![](./images/layer_created.png)
+
+### 4. 添加layer到lambda
+![](./images/add_layer.png)
+
+注意：添加过程中请选择“提供层版本ARN”, 并填写刚才记录下的layer的ARN
+![](./images/add_layer2.png)
+
+### 5. 测试
+和实验一中的测试步骤和结果相同
+
 ## 用custom runtime跑php脚本
 
 # 参考文献
