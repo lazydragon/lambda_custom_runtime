@@ -176,6 +176,8 @@ Hello World! You've reached <?php print($_SERVER['REQUEST_URI']); ?>
 如实验1，2一样创建lambda，打包index.php，并上传。
 大家可以直接使用我打包好的[function_php.zip](./php_example/function_php.zip)
 
+注意：处理程序项要填写成 index.php
+
 ### 2. 添加php custom层
 如实验2中一样在lambda上添加层。
 
