@@ -189,11 +189,15 @@ Hello World! You've reached <?php print($_SERVER['REQUEST_URI']); ?>
 关于创建php custom层时所需要使用的zip包，大家可以根据[stackery](https://github.com/stackery/php-lambda-layer)文档编译custom runtime,或直接下载我打包编译好的[php71.zip](./php_example/php71.zip)
 
 ### 3. 创建测试案例并测试
+创建测试案例，选择API gateway lambda proxy模板。 注意：我们现在使用的stackery php层，默认识别的请求格式为API gateway lambda proxy格式。如果格式不同，需要修改配置或者runtime代码。
 ![](./images/test2.png)
 
 测试结果
 
 ![](./images/result3.png)
+
+# 后话
+custom runtime通过runtime API的形式让lambda有了无限的可能性。什么是以前lambda不能做，现在却能做的事情呢？欢迎大家发挥想象，一起玩起来！
 
 # 参考文献
 - runtime api: https://docs.aws.amazon.com/zh_cn/lambda/latest/dg/runtimes-api.html
